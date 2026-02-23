@@ -1,33 +1,27 @@
-FROM golang:alpine as builder
-MAINTAINER Jessica Frazelle <jess@linux.com>
+FROM golang:1.22-alpine AS builder
 
-ENV PATH /go/bin:/usr/local/go/bin:$PATH
-ENV GOPATH /go
+WORKDIR /app
 
-RUN	apk add --no-cache \
-	bash \
-	ca-certificates
+# Install certificates for HTTPS calls
+RUN apk add --no-cache ca-certificates
 
-COPY . /go/src/github.com/genuinetools/weather
+# Copy go mod files first for better layer caching
+COPY go.mod go.sum ./
+RUN go mod download
 
-RUN set -x \
-	&& apk add --no-cache --virtual .build-deps \
-		git \
-		gcc \
-		libc-dev \
-		libgcc \
-		make \
-	&& cd /go/src/github.com/genuinetools/weather \
-	&& make static \
-	&& mv weather /usr/bin/weather \
-	&& apk del .build-deps \
-	&& rm -rf /go \
-	&& echo "Build complete."
+# Copy the rest of the source
+COPY . .
+
+# Build static binary
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build -o terminal-weather
 
 FROM alpine:latest
 
-COPY --from=builder /usr/bin/weather /usr/bin/weather
-COPY --from=builder /etc/ssl/certs/ /etc/ssl/certs
+RUN apk add --no-cache ca-certificates
 
-ENTRYPOINT [ "weather" ]
-CMD [ "--help" ]
+# Copy compiled binary from builder stage
+COPY --from=builder /app/terminal-weather /usr/bin/weather
+
+ENTRYPOINT ["weather"]
+CMD ["--help"]

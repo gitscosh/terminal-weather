@@ -1,9 +1,9 @@
 # weather
 
-[![make-all](https://github.com/genuinetools/weather/workflows/make%20all/badge.svg)](https://github.com/genuinetools/weather/actions?query=workflow%3A%22make+all%22)
-[![make-image](https://github.com/genuinetools/weather/workflows/make%20image/badge.svg)](https://github.com/genuinetools/weather/actions?query=workflow%3A%22make+image%22)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=for-the-badge)](https://godoc.org/github.com/genuinetools/weather)
-[![Github All Releases](https://img.shields.io/github/downloads/genuinetools/weather/total.svg?style=for-the-badge)](https://github.com/genuinetools/weather/releases)
+[![make-all](https://github.com/gitscosh/terminal-weather/workflows/make%20all/badge.svg)](https://github.com/gitscosh/terminal-weather/actions?query=workflow%3A%22make+all%22)
+[![make-image](https://github.com/gitscosh/terminal-weather/workflows/make%20image/badge.svg)](https://github.com/gitscosh/terminal-weather/actions?query=workflow%3A%22make+image%22)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=for-the-badge)](https://godoc.org/github.com/gitscosh/terminal-weather)
+[![Github All Releases](https://img.shields.io/github/downloads/genuinetools/weather/total.svg?style=for-the-badge)](https://github.com/gitscosh/terminal-weather/releases)
 
 Weather via the command line. Uses the [darksky.net](https://darksky.net) API so it's super accurate. Also includes any current weather alerts in the output.
 
@@ -31,12 +31,12 @@ Weather via the command line. Uses the [darksky.net](https://darksky.net) API so
 
 #### Binaries
 
-For installation instructions from binaries please visit the [Releases Page](https://github.com/genuinetools/weather/releases).
+For installation instructions from binaries please visit the [Releases Page](https://github.com/gitscosh/terminal-weather/releases).
 
 #### Via Go
 
 ```console
-$ go get github.com/genuinetools/weather
+$ go get github.com/gitscosh/terminal-weather
 ```
 
 #### Via Homebrew
@@ -222,4 +222,4 @@ test                           Runs the go tests
 vet                            Verifies `go vet` passes
 ```
 
-[![Analytics](https://ga-beacon.appspot.com/UA-29404280-16/weather/README.md)](https://github.com/genuinetools/weather)
+[![Analytics](https://ga-beacon.appspot.com/UA-29404280-16/weather/README.md)](https://github.com/gitscosh/terminal-weather)
