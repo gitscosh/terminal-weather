@@ -44,7 +44,7 @@ func main() {
 
 	flag.Parse()
 
-	// Allow: weather 92027  OR  weather "San Diego"
+	// Allow: weather 00000  OR  weather "City Name"
 	if location == "" && flag.NArg() > 0 {
 		location = flag.Arg(0)
 	}
