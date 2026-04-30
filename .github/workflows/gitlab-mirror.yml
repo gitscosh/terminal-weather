@@ -8,10 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout full repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: true
+
+      - name: Fetch all refs
+        run: |
+          git fetch --prune --unshallow || true
+          git fetch --all
 
       - name: Setup SSH key
         run: |
@@ -20,7 +26,7 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
 
-      - name: Push to GitLab
+      - name: Mirror repository to GitLab
         run: |
           git remote add gitlab git@gitlab.com:MatrixRaven/terminal-weather.git
           git push gitlab --mirror
