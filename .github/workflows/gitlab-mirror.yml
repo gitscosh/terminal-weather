@@ -23,5 +23,4 @@ jobs:
       - name: Push to GitLab
         run: |
           git remote add gitlab git@gitlab.com:MatrixRaven/terminal-weather.git
-          git push gitlab --all
-          git push gitlab --tags
+          git push gitlab --mirror
